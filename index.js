@@ -13,7 +13,7 @@ app.use(express.urlencoded({extended: true}))
 
 const path = require('path');
 
-
+app.use("/api/retire", require("./routes/retire.route"))
 app.use("/user", require('./routes/users.route'))
 app.use("/auth", require("./routes/auth.route"))
 app.get("/",(req,res)=>res.status(200).send("hello!"))

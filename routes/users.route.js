@@ -5,8 +5,8 @@ const UserModel = require("../models/user.model")
 router.get("/:id", async (req, res) => {
     try {
         let user = await UserModel.findById(req.params.id)
-            .populate("email")
-            .populate("displayName")
+            // .populate("user", "email")
+            .populate("user", "displayName")
         res.status(200).json({user})
     } catch(e) {
         console.log(e)

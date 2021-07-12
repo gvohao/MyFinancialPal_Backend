@@ -35,7 +35,7 @@ router.post('/register', async (req, res) => {
             user: {
                 id: user._id
             }
-        }, process.env.JWTSECRET, {expiresIn: "3d"})
+        }, process.env.JWTSECRET, {expiresIn: "10d"})
         console.log(`user created ${token}`)
         res.status(201).json({token: token, message: "User Created"})
     }// to include the else
