@@ -8,7 +8,8 @@ require('dotenv').config()
 router.get('/user', checkUser, async(req, res) => {
     try{
         let user = await UserModel.findById(req.user.id, "-password")
-            // .populate('displayImage','itemImage')
+            .populate("retirementPlan")
+        // .populate('displayImage','itemImage')
         res.status(200).json({user})
     }catch(e){
         res.status(500).json({ message: "something went wrong"})

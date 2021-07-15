@@ -7,7 +7,7 @@ const userSchema = new Schema({
     password:{type:String, required: true},
     isAdmin:{type:Boolean, default: false},
     displayName:{type:String},
-    retirementPlan:[{type: Schema.Types.ObjectId, ref:"Retire"}]
+    retirementPlan:{type: Schema.Types.ObjectId, ref:"Retire"}
     // displayImage:{type: Schema.Types.ObjectId, ref: 'Items'},
 })
 
