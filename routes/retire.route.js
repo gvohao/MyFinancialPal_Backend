@@ -4,7 +4,7 @@ const UserModel = require("../models/user.model")
 
 router.get("/:id", async (req, res) =>{
     try{
-        let retirePlan = await RetireModel.find({})
+        let retirePlan = await RetireModel.findById(req.params.id)
             .populate("userId","displayName")
         console.log("random")
         // console.log(req.params)
@@ -67,22 +67,19 @@ router.post("/plan", async(req, res)=>{
 //         res.status(400).json({"message" : "e"})
 //     }
 // })
-//
-// router.delete("/delete/:id", async (req,res) => {
-//     try{
-//         console.log("in delete path")
-//         let user = await UserModel.findById(req.params.id)
-//         let retirePlan = await RetireModel.findByIdAndDelete(user?.retirementPlan[0])
-//         console.log(user.retirementPlan[0])
-//         console.log(retirePlan)
-//
-//
-//         // console.log(req.params)
-//         res.status(200).json({user})
-//     }catch(e){
-//         res.status(400).json({"message" : "e"})
-//     }
-// })
+
+router.delete("/delete/:id", async (req,res) => {
+    try{
+        console.log("in delete path")
+        // let user = await UserModel.findById(req.params.id)
+        await RetireModel.findByIdAndDelete(req.params.id)
+        console.log(req.params.id)
+        console.log("deleted")
+        res.status(200).json({user})
+    }catch(e){
+        res.status(400).json({"message" : "e"})
+    }
+})
 
 
 module.exports = router
